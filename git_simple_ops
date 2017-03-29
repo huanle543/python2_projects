@@ -1,0 +1,31 @@
+1.确定这台机器的id
+  $ git config --global user.name "Your Name"
+  $ git config --global user.email "email@example.com"
+  在引号内输入自己的用户名和邮箱
+2.创建本台机器的ssh码
+  $ ssh-keygen -t rsa -C "youremail@example.com"
+  在users/.shh 下找到id_rsa,id_rsa.pub两个文件，pub是公钥，把里面的内容添加到github的ssh-key里。
+3.在本地建立一个repository
+  $ git init
+4.在github里新建一个repository用来跟本地的文件夹同步，如test
+5.将本地文件夹与github中的test相关联
+  $ git remote add origin git@github.com:username/test.git
+  远程库的名字叫origin，可以自己更改
+6.添加文件
+  $ git add test.txt
+  在本地仓库中添加一个文件
+  若要添加全部文件，可运行
+  $ git add *
+7.提交文件
+  $ git commit -m "add test file"
+  将该文件提交到本地仓库中，引号中为本次提交的说明
+8.将本地仓库的所有内容推送到远程仓库
+  $ git push -u origin master
+  由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+  还会把本地的master分支和远程的master分支关联起来.
+  在以后的推送或者拉取时就可以简化命令:
+  $ git push origin master
+9.从远程库克隆至本地
+  $ git clone git@github.com:username/test.git
+10.将本地仓库更新至最新改动
+  $ git pull
